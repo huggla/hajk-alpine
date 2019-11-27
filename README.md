@@ -1,2 +1,2 @@
 # hajk-alpine
-Hajk on Alpine.
+Hajk on Alpine. For testing purposes.
