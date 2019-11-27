@@ -3,7 +3,7 @@
 # =========================================================================
 # ARGs (can be passed to Build/Final) <BEGIN>
 ARG SaM_VERSION="1.1-edge"
-ARG TAG="20191112"
+ARG TAG="20191127"
 ARG IMAGETYPE="application"
 ARG CLONEGITS="https://github.com/hajkmap/Hajk.git"
 ARG BUILDDEPS="npm"
