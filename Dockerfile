@@ -5,7 +5,7 @@
 ARG SaM_VERSION="1.1-edge"
 ARG TAG="20191112"
 ARG IMAGETYPE="application"
-ARG BASEIMAGE="node:alpine"
+ARG INITIMAGE="node:alpine"
 ARG CLONEGITS="https://github.com/hajkmap/Hajk.git"
 ARG BUILDCMDS=\
 "   npm install npm@latest -g "\
@@ -45,7 +45,7 @@ COPY --from=build /finalfs /
 # =========================================================================
 # Final
 # =========================================================================
-ENV VAR_FINAL_COMMAND="mkdir -p /hajk-client /hajk-admin && cp -a cd hajk-admin && npm start"
+ENV VAR_FINAL_COMMAND="cd /hajk-admin && npm start"
 
 # Generic template (don't edit) <BEGIN>
 USER starter
