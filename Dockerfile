@@ -17,7 +17,7 @@ ARG BUILDCMDS=\
 "&& npm --depth 8 update "\
 "&& cp -a ../new-client ../new-admin /finalfs/"
 ARG RUNDEPS="npm"
-ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm /usr/bin/node"
+ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/bin/npm /usr/bin/node"
 # ARGs (can be passed to Build/Final) </END>
 
 # Generic template (don't edit) <BEGIN>
