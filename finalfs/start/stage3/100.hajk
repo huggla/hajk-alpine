@@ -18,5 +18,5 @@ then
       cp -a /new-admin/* /hajk-admin/
    fi
    rm -rf /new-admin
-#   npm install npm@latest -g
+   npm install npm@latest -g
 fi
