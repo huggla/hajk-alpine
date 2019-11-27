@@ -9,6 +9,8 @@ ARG CLONEGITS="https://github.com/hajkmap/Hajk.git"
 ARG BUILDDEPS="npm"
 ARG BUILDCMDS=\
 "   npm install npm@latest -g "\
+'&& ls -la /finalfs/usr/bin '\
+'&& ls -la /finalfs/usr/local/bin '\
 "&& cd Hajk/new-admin "\
 "&& npm install "\
 "&& npm --depth 8 update "\
@@ -18,6 +20,8 @@ ARG BUILDCMDS=\
 "&& cp -a ../new-client ../new-admin /finalfs/ "\
 "&& which npm "\
 "&& which node "\
+'&& ls -la /finalfs/usr/bin '\
+'&& ls -la /finalfs/usr/local/bin '\
 "&& mv /finalfs/usr/bin/npm /finalfs/usr/local/bin/npm"
 ARG RUNDEPS="npm"
 ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm"
