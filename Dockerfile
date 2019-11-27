@@ -16,6 +16,7 @@ ARG BUILDCMDS=\
 "&& npm install "\
 "&& npm --depth 8 update "\
 "&& cp -a ../new-client ../new-admin /finalfs/"
+ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh"
 # ARGs (can be passed to Build/Final) </END>
 
 # Generic template (don't edit) <BEGIN>
@@ -45,7 +46,7 @@ COPY --from=build /finalfs /
 # =========================================================================
 # Final
 # =========================================================================
-ENV VAR_FINAL_COMMAND="cd /hajk-admin && npm start"
+ENV VAR_FINAL_COMMAND="hajk.sh"
 
 # Generic template (don't edit) <BEGIN>
 USER starter
