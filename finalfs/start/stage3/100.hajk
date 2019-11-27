@@ -1,0 +1,21 @@
+# Set in stage2:
+# ---------------------------------------------------------
+# set -e +a +m +s +i -f
+# isFirstRun
+# VAR_*
+# All functions in /start/functions
+
+if [ "$isFirstRun" == "true" ]
+then
+   mkdir -p /hajk-client /hajk-admin
+   if [ -z "$(ls -A /hajk-client)" ]
+   then
+      cp -a /new-client/* /hajk-client/
+   fi
+   rm -rf /new-client
+   if [ -z "$(ls -A /hajk-admin)" ]
+   then
+      cp -a /new-admin/* /hajk-admin/
+   fi
+   rm -rf /new-admin
+fi
