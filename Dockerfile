@@ -5,8 +5,8 @@
 ARG SaM_VERSION="1.1-edge"
 ARG TAG="20191112"
 ARG IMAGETYPE="application"
-ARG INITIMAGE="node:alpine"
 ARG CLONEGITS="https://github.com/hajkmap/Hajk.git"
+ARG BUILDDEPS="npm"
 ARG BUILDCMDS=\
 "   npm install npm@latest -g "\
 "&& cd Hajk/new-admin "\
@@ -16,7 +16,9 @@ ARG BUILDCMDS=\
 "&& npm install "\
 "&& npm --depth 8 update "\
 "&& cp -a ../new-client ../new-admin /finalfs/"
-ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm"
+ARG RUNDEPS="npm"
+ARG FINALCMDS="npm install npm@latest -g"
+ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm /usr/bin/node"
 # ARGs (can be passed to Build/Final) </END>
 
 # Generic template (don't edit) <BEGIN>
@@ -27,12 +29,6 @@ FROM ${CONTENTIMAGE4:-scratch} as content4
 FROM ${CONTENTIMAGE5:-scratch} as content5
 FROM ${INITIMAGE:-${BASEIMAGE:-huggla/sam_$SaM_VERSION:base-$TAG}} as init
 # Generic template (don't edit) </END>
-
-RUN exec > /build.log 2>&1 \
- && set -ex +fam \
- && mkdir /environment /tmp/onbuild \
- && (find . -type l ! -path './tmp/*' ! -path './var/cache/*' ! -path './proc/*' ! -path './sys/*' ! -path './dev/*' -exec sh -c 'echo -n "$(echo "{}" | cut -c 2-)>"' \; -exec readlink "{}" \; && find . -type f ! -path './tmp/*' ! -path './var/cache/*' ! -path './proc/*' ! -path './sys/*' ! -path './dev/*' -exec md5sum "{}" \; | awk '{first=$1; $1=""; print $0">"first}' | sed 's|^ [.]||') | sort -u - > /tmp/onbuild/exclude.filelist \
- && tar -c -z -f /environment/onbuild.tar.gz -C /tmp onbuild
 
 # =========================================================================
 # Build
