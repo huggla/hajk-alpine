@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/local/bin/dash
 
 cd /hajk-admin
 npm start &
