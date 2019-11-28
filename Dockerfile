@@ -2,29 +2,27 @@
 # Init
 # =========================================================================
 # ARGs (can be passed to Build/Final) <BEGIN>
-ARG SaM_VERSION="1.1-edge"
-ARG TAG="20191127"
+ARG SaM_VERSION="1.2-edge"
+ARG TAG="20191128"
 ARG IMAGETYPE="application"
 ARG CLONEGITS="https://github.com/hajkmap/Hajk.git"
 ARG BUILDDEPS="npm"
 ARG BUILDCMDS=\
 "   npm install npm@latest -g "\
-'&& ls -la /finalfs/usr/bin '\
-'&& ls -la /finalfs/usr/local/bin '\
 "&& cd Hajk/new-admin "\
 "&& npm install "\
 "&& npm --depth 8 update "\
 "&& cd ../new-client "\
 "&& npm install "\
 "&& npm --depth 8 update "\
-"&& cp -a ../new-client ../new-admin /finalfs/ "\
-"&& which npm "\
-"&& which node "\
-'&& ls -la /finalfs/usr/bin '\
-'&& ls -la /finalfs/usr/local/bin '\
-"&& mv /finalfs/usr/bin/npm /finalfs/usr/local/bin/npm"
+"&& cp -a ../new-client ../new-admin /finalfs/"
 ARG RUNDEPS="npm"
-ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm"
+ARG FINALCMDS=\
+"npm install npm@latest -g "\
+"&& mv /usr/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm "\
+"&& cd /usr/lib/node_modules/npm/bin "\
+"&& ln -s ../../../../local/bin/npm npm-cli.js"
+ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm /usr/bin/node"
 # ARGs (can be passed to Build/Final) </END>
 
 # Generic template (don't edit) <BEGIN>
