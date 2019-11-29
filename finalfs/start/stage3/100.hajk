@@ -11,12 +11,14 @@ then
    clientDirContents="$(ls -A /hajk-client)"
    if [ -z "$clientDirContents" ] || [ "$clientDirContents" == ".snapshot" ]
    then
+      sed -i "s/localhost:55630/$VAR_BACKEND_ADDRESS/g" /new-client/public/appConfig.json
       cp -a /new-client/* /hajk-client/
    fi
    rm -rf /new-client
    adminDirContents="$(ls -A /hajk-admin)"
    if [ -z "$adminDirContents" ] || [ "$adminDirContents" == ".snapshot" ]
    then
+      sed -i "s/localhost:55630/$VAR_BACKEND_ADDRESS/g" /new-admin/public/config.json
       cp -a /new-admin/* /hajk-admin/
    fi
    rm -rf /new-admin
