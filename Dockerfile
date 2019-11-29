@@ -19,7 +19,12 @@ ARG BUILDCMDS=\
 "&& cp -a ../new-client ../new-admin /finalfs/"
 ARG RUNDEPS="npm"
 ARG FINALCMDS=\
-"   mv /usr/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm "\
+"   cd /usr/local "\
+"&& mv bin bin.tmp "\
+"&& ln -s ../lib/node_modules/npm/* ./ "\
+"&& rm bin "\
+"&& mv bin.tmp bin "\
+"&& mv /usr/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm "\
 "&& cd /usr/lib/node_modules/npm/bin "\
 "&& ln -s ../../../../local/bin/npm npm-cli.js"
 ARG STARTUPEXECUTABLES="/usr/local/bin/hajk.sh /usr/local/bin/npm /usr/bin/node"
