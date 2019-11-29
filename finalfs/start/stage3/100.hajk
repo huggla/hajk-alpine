@@ -8,12 +8,14 @@
 if [ "$isFirstRun" == "true" ]
 then
    mkdir -p /hajk-client /hajk-admin
-   if [ -z "$(ls -A /hajk-client)" ]
+   clientDirContents="$(ls -A /hajk-client)"
+   if [ -z "$clientDirContents" ] || [ "$clientDirContents" == ".snapshot" ]
    then
       cp -a /new-client/* /hajk-client/
    fi
    rm -rf /new-client
-   if [ -z "$(ls -A /hajk-admin)" ]
+   adminDirContents="$(ls -A /hajk-admin)"
+   if [ -z "$adminDirContents" ] || [ "$adminDirContents" == ".snapshot" ]
    then
       cp -a /new-admin/* /hajk-admin/
    fi
