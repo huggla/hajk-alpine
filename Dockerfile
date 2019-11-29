@@ -51,7 +51,8 @@ COPY --from=build /finalfs /
 # =========================================================================
 # Final
 # =========================================================================
-ENV VAR_FINAL_COMMAND="hajk.sh"
+ENV VAR_FINAL_COMMAND="hajk.sh" \
+    VAR_BACKEND_ADDRESS="localhost:8080"
 
 # Generic template (don't edit) <BEGIN>
 USER starter
